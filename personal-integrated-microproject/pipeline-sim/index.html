@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RISC Pipeline Simulator | FLAT + COA + DAA Integrated Microproject</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>RISC Pipeline Simulator</h1>
+    <p>An integrated microproject combining DFA-based instruction lexing, 5-stage pipelined execution with hazard detection, and greedy forwarding scheduling.</p>
+    <div class="badge-row">
+      <span class="badge badge-flat">FLAT · DFA Lexer</span>
+      <span class="badge badge-coa">COA · Pipeline &amp; Hazards</span>
+      <span class="badge badge-daa">DAA · Greedy Scheduling</span>
+    </div>
+    <p style="margin-top:8px; font-size:.72rem;">Dasari Saideep Srinivas · 2411021060596 · Squad 70 · Kalvium × Alliance University · October 2026</p>
+  </header>
+
+  <div class="wrap">
+
+    <!-- ── 1. Code editor ── -->
+    <div class="card">
+      <h2>Assembly Editor</h2>
+      <textarea id="code-input" spellcheck="false" placeholder="Type RISC assembly here..."></textarea>
+      <div class="controls">
+        <button id="build-btn" type="button">▶ Simulate Pipeline</button>
+        <div class="toggle-wrap">
+          <input type="checkbox" id="fwd-toggle" checked />
+          <label for="fwd-toggle">Enable forwarding (greedy)</label>
+        </div>
+      </div>
+      <div id="example-chips"></div>
+    </div>
+
+    <div id="error-bar"></div>
+
+    <!-- ── 2. Tokens (FLAT output) ── -->
+    <div class="card">
+      <h2>Tokenized Output <span class="tag tag-flat">FLAT</span></h2>
+      <div id="token-output"></div>
+    </div>
+
+    <!-- ── 3. DFA Table (FLAT) ── -->
+    <div class="card">
+      <h2>Lexer DFA Transition Table <span class="tag tag-flat">FLAT</span></h2>
+      <div class="gantt-wrap">
+        <table id="dfa-table"></table>
+      </div>
+    </div>
+
+    <!-- ── 4. Pipeline Gantt (COA) ── -->
+    <div class="card">
+      <h2>Pipeline Execution Timeline <span class="tag tag-coa">COA</span></h2>
+      <div class="gantt-wrap" id="gantt"></div>
+    </div>
+
+    <!-- ── 5. Stats + Forwarding ── -->
+    <div class="two-col">
+      <div class="card">
+        <h2>Performance Metrics <span class="tag tag-coa">COA</span></h2>
+        <div id="stats-output"></div>
+      </div>
+      <div class="card">
+        <h2>Forwarding Log <span class="tag tag-daa">DAA</span></h2>
+        <div id="fwd-log"></div>
+      </div>
+    </div>
+
+    <!-- ── 6. Register file ── -->
+    <div class="card">
+      <h2>Register File (after execution)</h2>
+      <div id="reg-file"></div>
+    </div>
+
+  </div>
+
+  <footer>Alliance University · Kalvium · Integrated Microproject (FLAT + COA + DAA) · October 2026</footer>
+
+  <script src="js/lexer.js"></script>
+  <script src="js/pipeline.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DAA Report — RISC Pipeline Simulator | Integrated Microproject</title>
+  <style>
+    :root { --ink:#111; --navy:#1b365d; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #d9d5cc; font-family: "Times New Roman", Times, serif; color: var(--ink); }
+    .toolbar {
+      position: sticky; top: 0; z-index: 5;
+      background: #1f2937; color: #fff;
+      font-family: Segoe UI, sans-serif;
+      padding: 12px 16px; font-size: 13.5px;
+    }
+    .toolbar button { margin-top: 8px; background: #fbbf24; border: 0; padding: 8px 14px; font-weight: 700; cursor: pointer; border-radius: 4px; }
+    .sheet { width: 210mm; margin: 16px auto; background: #fff; padding: 18mm 18mm 16mm; box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+    .page { page-break-after: always; min-height: 250mm; }
+    .page:last-child { page-break-after: auto; }
+    h1,h2,h3 { margin: 0; }
+    p { text-align: justify; font-size: 12pt; line-height: 1.5; margin: 0 0 10px; }
+    .cover { text-align: center; display: flex; flex-direction: column; align-items: center; min-height: 250mm; }
+    .cover-logo-wrap { flex: 1; display: flex; align-items: center; justify-content: center; width: 100%; margin: 8px 0 0; }
+    .cover-logo { width: 48mm; height: 48mm; object-fit: contain; display: block; }
+    .uni { font-size: 13pt; letter-spacing: .16em; font-weight: 700; }
+    .school { margin-top: 4px; font-size: 12pt; }
+    .rule { width: 70%; height: 1px; background: #111; margin: 14px auto; }
+    .cover h1 { font-size: 18pt; margin: 12px 0; max-width: 90%; line-height: 1.3; }
+    .meta { margin-top: auto; text-align: left; width: 78%; font-size: 12pt; line-height: 1.7; }
+    .center-block { text-align: center; margin-top: 28px; }
+    .sign { margin-top: 48px; text-align: left; width: 70%; }
+    h2.ch { font-size: 14pt; margin: 18px 0 10px; border-bottom: 1px solid #111; padding-bottom: 3px; }
+    h3 { font-size: 12.5pt; margin: 14px 0 8px; }
+    ol, ul { font-size: 12pt; line-height: 1.5; }
+    pre { background: #f4f4f4; border: 1px solid #ccc; padding: 8px 10px; font-size: 9.2pt; line-height: 1.35; overflow: hidden; font-family: Consolas, "Courier New", monospace; }
+    table { border-collapse: collapse; width: 100%; font-size: 11pt; margin: 8px 0 14px; }
+    th, td { border: 1px solid #333; padding: 5px 7px; text-align: center; }
+    th { background: #eef2f6; }
+    .toc div { display: flex; font-size: 12pt; margin: 4px 0; }
+    .toc .d { flex: 1; border-bottom: 1px dotted #888; margin: 0 8px 4px; }
+    @page { size: A4; margin: 16mm; }
+    @media print {
+      body { background: #fff; }
+      .toolbar { display: none !important; }
+      .sheet { width: auto; margin: 0; box-shadow: none; padding: 0; }
+      .page { min-height: auto; }
+      .cover { min-height: 250mm; }
+      .cover-logo { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    Design and Analysis of Algorithms — Integrated Microproject Report (3 of 3)
+    <br /><button type="button" onclick="window.print()">Print / Save PDF</button>
+  </div>
+
+  <div class="sheet">
+    <!-- ── COVER ── -->
+    <section class="page cover">
+      <div class="uni">ALLIANCE UNIVERSITY</div>
+      <div class="school">Alliance School of Advanced Computing</div>
+      <div class="school">Computer Science and Engineering · Kalvium</div>
+      <div class="rule"></div>
+      <div style="letter-spacing:.12em; font-size:11.5pt;">MINI PROJECT REPORT</div>
+      <h1>GREEDY FORWARDING SCHEDULER FOR A RISC PIPELINE SIMULATOR</h1>
+      <div style="font-size:12pt; max-width:85%;">
+        Design and Analysis of Algorithms<br />
+        Concept: Greedy algorithms and local optimality (Module 3)<br /><br />
+        <i>Integrated project with FLAT and COA — one common application, three separate reports</i>
+      </div>
+      <div class="rule"></div>
+      <div>
+        Submitted by<br /><b>Dasari Saideep Srinivas</b><br />
+        University Enrolment No. 2411021060596<br />
+        Squad 70
+      </div>
+      <p style="text-align:center; margin-top:18px;">In partial fulfilment for the award of the degree of<br />
+        <b>BACHELOR OF TECHNOLOGY</b><br />in<br />COMPUTER SCIENCE AND ENGINEERING</p>
+      <div>Under the guidance of<br /><b>Vaibhav Giri</b><br />Technical Mentor, Kalvium × Alliance</div>
+      <div style="margin-top:22px;">October 2026</div>
+      <div class="cover-logo-wrap">
+        <img class="cover-logo" src="alliance-logo.png" alt="Alliance University emblem" />
+      </div>
+    </section>
+
+    <!-- ── CERTIFICATE ── -->
+    <section class="page">
+      <div class="center-block">
+        <div class="uni">COMPUTER SCIENCE AND ENGINEERING</div>
+        <div class="school">ALLIANCE SCHOOL OF ADVANCED COMPUTING</div>
+        <div class="rule"></div>
+        <h1 style="font-size:16pt;">CERTIFICATE</h1>
+      </div>
+      <p style="margin-top:28px;">This is to certify that the report on Design and Analysis of Algorithms is submitted by Dasari Saideep Srinivas [Uni. Enrolment No. 2411021060596] in partial fulfilment for the award of the degree of Bachelor of Technology (Computer Science and Engineering) of Alliance University, is a bonafide work accomplished under my supervision and guidance during the academic year 2026. This report embodies the results of original work and studies conducted by the student and the contents do not form the basis for the award of any other degree to the candidate or anybody else.</p>
+      <div class="sign">
+        <div>Vaibhav Giri</div>
+        <div>Technical Mentor</div>
+        <div>Kalvium × Alliance University</div>
+        <div style="margin-top:28px;">Date: _______________ &nbsp;&nbsp;&nbsp; Signature: _______________</div>
+      </div>
+    </section>
+
+    <!-- ── DECLARATION ── -->
+    <section class="page">
+      <div class="center-block">
+        <div class="uni">COMPUTER SCIENCE AND ENGINEERING</div>
+        <div class="school">ALLIANCE SCHOOL OF ADVANCED COMPUTING</div>
+        <div class="rule"></div>
+        <h1 style="font-size:16pt;">DECLARATION</h1>
+      </div>
+      <p style="margin-top:28px;">I hereby declare that the report titled GREEDY FORWARDING SCHEDULER FOR A RISC PIPELINE SIMULATOR, submitted by me in partial fulfilment of the requirements for the award of the degree of Bachelor of Technology in Computer Science and Engineering (CSE) at Alliance University, is a record of my original work carried out under the supervision of Vaibhav Giri, Technical Mentor.</p>
+      <p>I further confirm that the views, findings and conclusions expressed here come from my own effort. This project is an integrated work shared with Formal Language and Automata Theory and Computer Organization and Architecture. Each subject has its own report. The DAA report covers the greedy forwarding algorithm and its optimality analysis.</p>
+      <p>This declaration stands as a testament to the authenticity and integrity of the work submitted.</p>
+      <div class="sign">
+        <div>Dasari Saideep Srinivas</div>
+        <div>2411021060596</div>
+        <div style="margin-top:20px;">Name of the Student &nbsp;&nbsp; University Registration Number &nbsp;&nbsp; Signature</div>
+        <div style="margin-top:36px;">________________ &nbsp;&nbsp;&nbsp; ________________ &nbsp;&nbsp;&nbsp; ________________</div>
+      </div>
+    </section>
+
+    <!-- ── ACKNOWLEDGEMENT ── -->
+    <section class="page">
+      <h2 class="ch">Acknowledgement</h2>
+      <p>I would like to thank everyone who helped me finish this integrated microproject. This report covers the Design and Analysis of Algorithms component: the greedy forwarding scheduler.</p>
+      <p>I thank Vaibhav Giri for the guidelines and for making us combine concepts from Modules 1–3 across subjects. The DAA lectures on greedy algorithms, the greedy choice property, and exchange arguments gave me the reasoning I needed to argue that "always forward when possible, stall only when necessary" is optimal for an in-order pipeline.</p>
+      <p>The activity selection problem from DAA Module 3 was the closest analogy. In activity selection, you always pick the earliest finishing activity. In pipeline forwarding, you always pick the shortest available forwarding path. Both are greedy, both are provably optimal for their setting, and both fail if the setting changes (out-of-order execution for forwarding, weighted intervals for activity selection).</p>
+      <p>Thank you.</p>
+      <p>Dasari Saideep Srinivas</p>
+    </section>
+
+    <!-- ── TABLE OF CONTENTS ── -->
+    <section class="page">
+      <h2 class="ch">TABLE OF CONTENTS</h2>
+      <div class="toc">
+        <div>Acknowledgement <span class="d"></span> 4</div>
+        <div>Abstract <span class="d"></span> 6</div>
+        <div>Chapter I – Introduction <span class="d"></span> 7</div>
+        <div>&nbsp;&nbsp;Problem Statement <span class="d"></span> 7</div>
+        <div>&nbsp;&nbsp;Theory <span class="d"></span> 8</div>
+        <div>Chapter II – System Configuration <span class="d"></span> 9</div>
+        <div>&nbsp;&nbsp;Greedy Algorithm <span class="d"></span> 9</div>
+        <div>&nbsp;&nbsp;Source Code <span class="d"></span> 10</div>
+        <div>Chapter III – Results <span class="d"></span> 11</div>
+        <div>Chapter IV – Conclusion <span class="d"></span> 13</div>
+        <div>References <span class="d"></span> 13</div>
+      </div>
+    </section>
+
+    <!-- ── ABSTRACT ── -->
+    <section class="page">
+      <h2 class="ch">Abstract</h2>
+      <p>This report covers the Design and Analysis of Algorithms component of an integrated microproject. The project is a RISC pipeline simulator. The DAA piece is the forwarding scheduler: the algorithm that decides, for each instruction in the decode stage, whether it can receive its operand via a forwarding path or must stall. The decision is greedy.</p>
+      <p>The greedy strategy is: for each source register, check the shortest forwarding path first (EX→EX), then the next shortest (MEM→EX). If a path provides the needed value, take it. Only stall when no forwarding path is available (load-use case). This is a locally optimal choice at each cycle, and it is also globally optimal for an in-order single-issue pipeline because no reordering of instructions is possible. The proof follows the exchange argument template from DAA Module 3.</p>
+      <p>The report explains the greedy choice property, the exchange argument, and shows experimental results: with greedy forwarding the simulator produces fewer stalls and lower CPI than without forwarding, on every test program. A forwarding log table records each greedy decision for traceability.</p>
+    </section>
+
+    <!-- ── CHAPTER I ── -->
+    <section class="page">
+      <h2 class="ch">Chapter I – Introduction</h2>
+      <p>In DAA Module 3, we learn that a greedy algorithm builds a solution step by step, choosing at each step the option that looks best locally. The greedy choice property says: a locally optimal choice at each step leads to a globally optimal solution. Activity selection, Huffman coding, and Kruskal's MST all work this way.</p>
+      <p>Pipeline forwarding is a scheduling problem. At each cycle, the scheduler faces a decision: does the instruction in ID need a value that is not yet in the register file? If yes, can it be forwarded from a later pipeline stage? The greedy approach says: always forward if the path exists, never stall unnecessarily. The alternative is to stall for every RAW hazard (no forwarding) or to reorder instructions (out-of-order execution, which is not greedy but dynamic programming / search-based).</p>
+      <p>I chose this angle because it shows a real greedy algorithm inside a system that is usually taught as a hardware concept. The forwarding logic is not hardware here; it is a software scheduler that makes the same decision a hardware forwarding unit would make. That makes it a DAA problem in a COA setting.</p>
+
+      <h3>Problem Statement</h3>
+      <p>Given the current state of a five-stage pipeline (which instructions are in IF, ID, EX, MEM, WB) and their source and destination registers, decide at each cycle whether to forward a value or insert a stall. The goal is to minimise the total number of stalls (and therefore minimise CPI) using a greedy strategy: always pick the shortest available forwarding path.</p>
+
+      <h3>Theory</h3>
+      <p><b>Greedy choice property for forwarding:</b> If the value needed by the instruction in ID is available from a forwarding path (EX→EX or MEM→EX), taking the forwarding path is at least as good as stalling. No alternative choice at this cycle can reduce total stalls below what greedy achieves.</p>
+      <p><b>Exchange argument:</b> Suppose an optimal solution S* stalls at cycle k where greedy would have forwarded. Replace that stall with a forward. The instruction in ID advances one cycle earlier. No later instruction is affected negatively, because forwarding does not consume the value (it is still written to the register file at WB). So S* with the stall replaced is at least as good as S*. Therefore greedy is optimal.</p>
+      <p>This argument only holds for in-order, single-issue pipelines. If the processor could reorder instructions (out-of-order execution), the problem becomes a scheduling problem with dependencies, which is closer to a DAG scheduling problem and may need dynamic programming or list scheduling — not greedy. That is the boundary of the greedy approach, and it matches the DAA lectures where we identify when greedy fails.</p>
+      <p><b>Complexity:</b> The hazard check at each cycle iterates over the source registers of the ID instruction (at most 2) and compares them with the destination register of the EX and MEM instructions (constant-time lookups). So the per-cycle cost is O(1), and the total cost over n instructions and n + k cycles is O(n + k) where k is the number of stalls. Since k ≤ n (at most one stall per instruction), the total is O(n).</p>
+    </section>
+
+    <!-- ── CHAPTER II ── -->
+    <section class="page">
+      <h2 class="ch">Chapter II – System Configuration</h2>
+      <p>Same platform as the FLAT and COA reports. The greedy scheduler is implemented inside the pipeline engine in js/pipeline.js. It is the checkHazards function called once per cycle during the ID stage.</p>
+
+      <h3>Greedy Algorithm</h3>
+      <p>Pseudocode for the greedy forwarding decision at cycle c:</p>
+<pre>GREEDY-FORWARD(ID_insn, EX_insn, MEM_insn):
+  for each source register r of ID_insn:
+    if r == R0: skip          # R0 is hardwired to 0
+    if EX_insn writes r:
+      if EX_insn is a LOAD:
+        return STALL          # value not ready until MEM
+      else:
+        record FORWARD(EX → ID, r)
+        continue              # greedy: take shortest path
+    if MEM_insn writes r:
+      record FORWARD(MEM → ID, r)
+  return NO_STALL</pre>
+      <p>The greedy choice is on line "continue": when the EX path is available, take it and stop looking. The MEM path is only checked if EX did not provide the value. This is the "earliest available" heuristic, analogous to "earliest finishing time" in activity selection.</p>
+
+      <p><b>Connection to DAA Module 3 concepts:</b></p>
+      <ul>
+        <li><b>Greedy choice property</b> (LU 3.1): each forward/stall decision is locally optimal.</li>
+        <li><b>Exchange argument</b> (LU 3.1): replacing a stall with a forward never worsens the schedule.</li>
+        <li><b>Activity selection analogy</b> (LU 3.3): earliest finish → shortest forwarding path.</li>
+        <li><b>Optimal substructure</b>: the schedule up to cycle c is optimal, and the decision at cycle c+1 depends only on the current pipeline state, not on past decisions.</li>
+      </ul>
+
+      <h3>Source Code</h3>
+      <p>The forwarding decision is in <i>pipeline-sim/js/pipeline.js</i>, function checkHazards (reproduced in the COA report). The DAA contribution is the reasoning behind the function, not a separate file. The greedy property is visible in the code: the function returns as soon as it finds a stall (load-use) or records a forward (EX path), and only falls through to the MEM check if the EX path did not match.</p>
+    </section>
+
+    <!-- ── CHAPTER III ── -->
+    <section class="page">
+      <h2 class="ch">Chapter III – Results</h2>
+      <p>The key experiment is the comparison between greedy forwarding (on) and no forwarding (off). The table below shows the same five test programs run with both settings.</p>
+      <table>
+        <tr><th>Test</th><th colspan="3">Forwarding ON (greedy)</th><th colspan="3">Forwarding OFF</th></tr>
+        <tr><th></th><th>Cycles</th><th>Stalls</th><th>CPI</th><th>Cycles</th><th>Stalls</th><th>CPI</th></tr>
+        <tr><td>Data hazard (3 insns + HLT)</td><td>8</td><td>0</td><td>2.00</td><td>12</td><td>4</td><td>3.00</td></tr>
+        <tr><td>Load-use (2 insns + HLT)</td><td>8</td><td>1</td><td>2.67</td><td>10</td><td>3</td><td>3.33</td></tr>
+        <tr><td>No hazards (4 insns + HLT)</td><td>9</td><td>0</td><td>1.80</td><td>9</td><td>0</td><td>1.80</td></tr>
+        <tr><td>Branch (4 insns + HLT)</td><td>10</td><td>0</td><td>2.00</td><td>12</td><td>2</td><td>2.40</td></tr>
+        <tr><td>Complex mix (8 insns + HLT)</td><td>14</td><td>1</td><td>1.56</td><td>20</td><td>7</td><td>2.22</td></tr>
+      </table>
+
+      <p>Observations:</p>
+      <ol>
+        <li>Greedy forwarding never produces more stalls than no-forwarding. This is expected: forwarding can only remove stalls, never add them.</li>
+        <li>The "No hazards" test is identical in both modes. There is nothing to forward, so the greedy decision is never triggered. This confirms that the algorithm has zero overhead when it is not needed.</li>
+        <li>The "Complex mix" test shows the largest improvement: from 7 stalls down to 1. The single remaining stall is a load-use hazard that no amount of forwarding can remove without reordering instructions.</li>
+        <li>CPI improves in every test where hazards exist. The complex mix drops from 2.22 to 1.56, which is a 30% improvement.</li>
+      </ol>
+
+      <p><b>Forwarding log (Complex mix, first 4 events):</b></p>
+      <table>
+        <tr><th>Cycle</th><th>Path</th><th>Register</th><th>Producer instruction</th></tr>
+        <tr><td>C4</td><td>EX→ID</td><td>R2</td><td>ADDI R2, R0, 20</td></tr>
+        <tr><td>C5</td><td>EX→ID</td><td>R3</td><td>ADD R3, R1, R2</td></tr>
+        <tr><td>C8</td><td>MEM→ID</td><td>R4</td><td>LW R4, 0(R0)</td></tr>
+        <tr><td>C9</td><td>EX→ID</td><td>R5</td><td>SUB R5, R4, R1</td></tr>
+      </table>
+      <p>Each row is a greedy decision. At C4, the scheduler chose EX→ID for R2 because the ADDI producing R2 was in EX. At C8, it used MEM→ID for R4 because the load was in MEM (the data was just read from memory). No decision was wrong, and no decision could have been better. That is the greedy guarantee.</p>
+    </section>
+
+    <!-- ── CHAPTER IV ── -->
+    <section class="page">
+      <h2 class="ch">Chapter IV – Conclusion</h2>
+      <p>The greedy forwarding scheduler does what it was supposed to do: at each cycle it picks the shortest available forwarding path, and only stalls when no path exists. The exchange argument shows this is optimal for an in-order pipeline. The experiments confirm the theory: greedy forwarding always matches or beats no-forwarding, and the single unavoidable stall (load-use) is the provable lower bound.</p>
+      <p>What I took from this part of the project is that "greedy" is not just a chapter heading. It is a way to think about any decision that is made once per step and cannot be undone. The pipeline scheduler makes one decision per cycle. It cannot go back and un-stall a previous cycle. The greedy choice property says that is fine, as long as each decision is locally optimal. The exchange argument is how I prove it. That reasoning pattern — state the property, show the exchange, identify where it breaks — is the same for activity selection, for Huffman, and for Dijkstra. The pipeline just gave me one more place to use it.</p>
+      <p>The limit is clear: greedy works for in-order, single-issue. If the pipeline were superscalar or out-of-order, the scheduler would need to consider multiple instructions per cycle and reorder them, which is a different class of problem (closer to list scheduling or Tomasulo's algorithm). That is where greedy stops and more complex algorithms begin.</p>
+
+      <h2 class="ch">References</h2>
+      <ol>
+        <li>Cormen, T. H., Leiserson, C. E., Rivest, R. L., &amp; Stein, C. (2022). <i>Introduction to algorithms</i> (4th ed.). MIT Press. (Chapter 16: Greedy Algorithms.)</li>
+        <li>Kleinberg, J., &amp; Tardos, É. (2005). <i>Algorithm design</i>. Addison-Wesley. (Chapter 4: Greedy Algorithms — exchange arguments.)</li>
+        <li>Patterson, D. A., &amp; Hennessy, J. L. (2017). <i>Computer organization and design: The hardware/software interface</i> (RISC-V ed.). Morgan Kaufmann. (Section 4.7: Data hazards and forwarding.)</li>
+      </ol>
+    </section>
+  </div>
+</body>
+</html>
