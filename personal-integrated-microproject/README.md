@@ -73,10 +73,8 @@ Each subject has a separate report (as required for integrated projects) with:
 - Chapter III (Results with tables and data)
 - Chapter IV (Conclusion and References)
 
-Open each HTML file in Chrome → click **Print / Save PDF** → A4 → headers/footers off.
-
 ---
 
-**Submitted to:** Vaibhav Giri, Technical Mentor  
+**Submitted to:** Vaibhav Giri, Simran, Moufiya Technical Mentor  
 **Institution:** Kalvium | Alliance University  
 **Date:** October 2026
